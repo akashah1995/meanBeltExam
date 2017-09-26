@@ -1,0 +1,26 @@
+<div>
+  <p id = "Home"> <a [routerLink] = "['']"> Home </a>
+  <form #formData = 'ngForm' (submit) = 'addQuestion()'>
+    <p> Name <input
+    type = "text"
+    name = "name"
+    minlength = "2"
+    required
+    [(ngModel)] = 'newQuestion.name'
+    #name = 'ngModel'>
+    <span *ngIf = 'name.errors' class = 'red'> Name Field Incomplete </span> </p>
+
+    
+    <p>Question <input
+    type = "text"
+    name = "question"
+    minlength = "10"
+    required
+    [(ngModel)] = 'newQuestion.question'
+    #question = 'ngModel'>
+    <span *ngIf = 'question.errors' class = 'red'> Question must be 10 Characters! </span> </p>
+
+    <p><button id = "cancel" (click) = 'cancel()'>Cancel</button><input type = "submit" value = "Submit" [disabled] = '!formData.valid'></p>
+
+  </form>
+</div>

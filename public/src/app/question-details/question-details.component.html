@@ -1,0 +1,11 @@
+<div>
+  <p id = "Home"> <a [routerLink] = "['']"> Home | </a><a href = '/question/{{question._id}}/new_answer'> Answer this Question </a></p>
+  <h1> {{question.question}} </h1>
+  <div *ngFor = 'let answer of question.answers, let index = index'>
+    <p> {{index + 1}}). </p>
+    <p> {{answer.name}} wrote: <p>
+    <p> {{answer.answer}} <button id = "like" (click) = 'like(index, question._id)'>Like</button> {{answer.likes}} </p>
+    <p> {{answer.details}} </p>
+    <br>
+  </div>
+</div>

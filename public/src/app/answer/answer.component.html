@@ -1,0 +1,36 @@
+<div>
+  <p id = "Home"> <a [routerLink] = "['']"> Home | </a><a href = "/question/{{question._id}}"> Go Back to Question </a></p>
+  <h1>{{question.question}}</h1>
+  <form #formData = 'ngForm' (submit) = 'addAnswer(question._id)'>
+    <p> Name <input
+    type = "text"
+    name = "name"
+    minlength = "2"
+    required
+    [(ngModel)] = 'newAnswer.name'
+    #name = 'ngModel'>
+    <span *ngIf = 'name.errors' class = 'red'> Name Field Incomplete </span> </p>
+
+    
+    <p> Answer <input
+    type = "text"
+    name = "answer"
+    minlength = "5"
+    required
+    [(ngModel)] = 'newAnswer.answer'
+    #answer = 'ngModel'>
+    <span *ngIf = 'answer.errors' class = 'red'> Answer must be 5 Characters! </span> </p>
+
+    <p> Details <input
+    type = "text"
+    name = "details"
+    [(ngModel)] = 'newAnswer.details'
+    #details = 'ngModel'>
+    <span *ngIf = 'details.errors' class = 'red'> Answer must be 5 Characters! </span> </p>
+
+
+
+    <p><button id = "cancel" (click) = 'cancel(question._id)'>Cancel</button><input type = "submit" value = "Submit" [disabled] = '!formData.valid'></p>
+
+  </form>
+
